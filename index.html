@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniruddh Yadav - Portfolio</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --text-color: #ffffff;
+            --accent-color: #4a90e2;
+            --card-bg: #1a1a1a;
+            --border-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 40px;
+        }
+
+        /* Section Headings */
+        h2.section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h3 {
+            font-weight: normal;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: transparent;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--card-bg);
+            border-color: var(--accent-color);
+        }
+
+        /* Social Icons */
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .about-text {
+            text-align: left;
+            font-size: 0.95rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Timeline Cards (Experience & Education) */
+        .timeline {
+            border-left: 2px solid var(--border-color);
+            margin-left: 20px;
+            padding-left: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        .card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .card .company {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .card .date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .project-card h4 {
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Pushes button to bottom */
+        }
+
+        .project-card .btn {
+            font-size: 0.8rem;
+            padding: 5px 15px;
+            margin-top: auto;
+        }
+
+        /* Skills Grid */
+        .skills-container {
+            text-align: center;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h4 {
+            margin-bottom: 1rem;
+            color: #aaa;
+            font-weight: normal;
+        }
+
+        .skill-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        .skill-item i {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">Aniruddh Yadav</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero & About Section -->
+        <section id="about" class="hero">
+            <!-- Apni photo ka link 'src' me daal dena -->
+            <img src="profile.jpeg" alt="Aniruddh Yadav" class="profile-img">
+            <h1>Aniruddh Yadav</h1>
+            <h3><i class="fa-solid fa-code"></i> Software Engineer & CSE Student</h3>
+            
+            <a href="https://drive.google.com/file/d/1B59U7OFd44C0BfCkE2MZTaosVc0002x3/view?usp=drivesdk" target="_blank" class="btn"><i class="fa-solid fa-file-pdf"></i> View CV</a>
+
+            <!-- SOCIAL MEDIA LINKS -->
+            <div class="social-links">
+                <a href="mailto:aniruddhyadav165@gmail.com" target="_blank" title="Email (Gmail)"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/aniruddh-yadav-4940b7374?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/aniruddhyadav227" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/aniruddh___yadav?cplk=bWJ1ZmtqYjBpeHpz" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <p class="about-text">
+                Hi, I'm Aniruddh, a dedicated B.Tech Computer Science student with a passion for software development and problem-solving. I specialize in C++, Python, SQL, and Web Technologies. I thrive on challenges, from building machine learning architectures for hackathons to developing robust applications. Let's connect and explore exciting tech possibilities!
+            </p>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience">
+            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Experience & Education</h2>
+            <div class="timeline">
+                <div class="card">
+                    <h4>Cybersecurity Analyst Virtual Intern</h4>
+                    <div class="company">TCS on Forage</div>
+                    <div class="date">Completed 2026</div>
+                    <p style="font-size: 0.9rem; color: #ccc;">Focused on Identity and Access Management (IAM) and cybersecurity analysis fundamentals.</p>
+                </div>
+                <div class="card">
+                    <h4>C++ Programming Intern</h4>
+                    <div class="company">CodeAlpha</div>
+                    <div class="date">Completed 2026</div>
+                    <p style="font-size: 0.9rem; color: #ccc;">Developed console applications including a CGPA calculator and user login/registration systems.</p>
+                </div>
+                <div class="card">
+                    <h4>Bachelor of Technology (B.Tech) in CSE</h4>
+                    <div class="company">Shri Ram Institute of Technology, Jabalpur</div>
+                    <div class="date">Current</div>
+                    <p style="font-size: 0.9rem; color: #ccc;">Active technical support member for Microsoft Campus Club.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> My Projects</h2>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h4>Secure House Wrapper</h4>
+                    <p>A smart security wrapper solution to monitor and enhance home security systems.</p>
+                    <a href="https://aniruddhyadav227.github.io/secure-house-wrapper/" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h4>Student Login CPP</h4>
+                    <p>A secure console-based student authentication and registration system built purely in C++.</p>
+                    <a href="https://aniruddhyadav227.github.io/student-login-portal/" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h4>Campus Connect</h4>
+                    <p>A unified platform designed to connect students across the college campus for events and networking.</p>
+                    <a href="https://aniruddhyadav227.github.io/Campus_Connect/" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <h4>AI College Assistant</h4>
+                    <p>An intelligent AI-powered assistant to help students with college-related queries, schedules, and resources.</p>
+                    <a href="https://aniruddhyadav227.github.io/ai-college-assistant/" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <h4>CGPA Calculator</h4>
+                    <p>An efficient academic tool built in C++ to help students easily calculate and track their semester grades.</p>
+                    <a href="https://github.com/aniruddhyadav227/CodeAlpha_CGPA_Calculator" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <h4>Student Expenses Tracker</h4>
+                    <p>A financial management application tailored for students to track daily expenses and manage budgets efficiently.</p>
+                    <a href=" https://aniruddhyadav227.github.io/student-expense-tracker/" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card">
+                    <h4>Cyber Security Toolkit</h4>
+                    <p>A comprehensive collection of scripts and tools designed to analyze vulnerabilities and enhance system security.</p>
+                    <a href=" https://aniruddhyadav227.github.io/CyberSecurity-Toolkit/" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Previous Project: SIH -->
+                <div class="project-card">
+                    <h4>Dynamic ETA Forecasting (SIH)</h4>
+                    <p>Machine learning architecture proposal for predicting railway train arrivals using spatio-temporal graph modeling.</p>
+                    <a href="https://docs.google.com/presentation/d/1FnXGjBIaTkxDs-MpBj0IROTcAAPWIB7d/edit?usp=drivesdk&ouid=110810929556226006568&rtpof=true&sd=true" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- Smart Disaster Resources Allocation Project -->
+                <div class="project-card">
+                    <h4>Smart Disaster Resources Allocation</h4>
+                    <p>A mobile application prototype featuring map tracking, resource requests, and an AI chatbot built using React Native and Expo.</p>
+                    <a href="https://drive.google.com/file/d/1ra_AazN7fcr7XARvQzNOabPBAnAqTJuZ/view?usp=drivesdk" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+
+                <!-- AI Cloud Removal Project -->
+                <div class="project-card">
+                    <h4>AI-Based Cloud Removal & Reconstruction for LISS IV Imagery</h4>
+                    <p>An advanced AI model designed to effectively remove cloud cover and accurately reconstruct geographical data in high-resolution LISS IV satellite imagery.</p>
+                    <a href="https://drive.google.com/file/d/1O9bIUGCKdBVLDZahCqkN-5Ntw1JJ0k5G/view?usp=drivesdk" target="_blank" class="btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-container">
+            <h2
